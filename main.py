@@ -4,6 +4,7 @@
 import pygame
 from constants import *
 from player import *
+from asteroids import *
 
 def main():
     print("Starting Asteroids!")
@@ -13,9 +14,14 @@ def main():
     running = True
     clock = pygame.time.Clock()
     dt = 0
+
+    # Groups
+
+    asteroids = pygame.sprite.Group()
     updatable = pygame.sprite.Group()
     drawable = pygame.sprite.Group()
     Player.containers = (updatable, drawable)
+    Asteroid.containers = (asteroids, updatable, drawable)
     p = Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)
     while running:
         for event in pygame.event.get():
